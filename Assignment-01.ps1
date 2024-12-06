@@ -1,7 +1,7 @@
 # Define the file paths
-$generalOutputFolder = "/Users/sarahgisondi/Assignment_01/retrieve-output"  # General output folder for filtered files
-$archiveFolderPath = "/Users/sarahgisondi/Assignment_01/archive"  # Folder to archive old folders
-$sourceFilePath = "/Users/sarahgisondi/Assignment_01/data.csv"  # Path to the source CSV file 
+$generalOutputFolder = "/Users/ash/Assignment_01/retrieve-output"  # General output folder for filtered files
+$archiveFolderPath = "/Users/ash/Assignment_01/archive"  # Folder to archive old folders
+$sourceFilePath = "/Users/ash/Assignment_01/data.csv"  # Path to the source CSV file 
  
 # Filter Value (set dynamically)
 $filterValue = "banana"
