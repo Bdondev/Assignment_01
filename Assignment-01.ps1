@@ -73,3 +73,10 @@ $modifiedData = $importedData | ForEach-Object {
 # Debugging: Output modified data after filtering
 $modifiedData | Format-Table -AutoSize
 
+# Export the filtered data to a new CSV file in the newly created folder
+$newCsvFilePath = Join-Path -Path $newFolderPath -ChildPath "filtered_output.csv"
+Write-Host "Exporting filtered data to CSV..."
+$modifiedData | Export-Csv -Path $newCsvFilePath -NoTypeInformation
+
+Write-Host "Filtered data has been written to $newCsvFilePath"
+
