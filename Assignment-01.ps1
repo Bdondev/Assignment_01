@@ -4,7 +4,7 @@ $archiveFolderPath = "/Users/ash/Assignment_01/archive"  # Folder to archive old
 $sourceFilePath = "/Users/ash/Assignment_01/data.csv"  # Path to the source CSV file 
  
 # Filter Value (set dynamically)
-$filterValue = "chocolate"
+$filterValue = "ice cream"
  
 # Find the next available folder name (vs1, vs2, etc.)
 $existingFolders = Get-ChildItem -Path $generalOutputFolder -Directory
