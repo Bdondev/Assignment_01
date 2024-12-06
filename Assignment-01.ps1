@@ -24,3 +24,14 @@ if (-not (Test-Path -Path $newFolderPath)) {
     New-Item -Path $newFolderPath -ItemType Directory
     Write-Host "Created new folder: $newFolderPath"
 }
+# Write sample data to CSV (simulating your original data file)
+$data = @(
+    [PSCustomObject]@{ product = "chocolate"; price = 4.99; aisle = "bakery"; available = "yes" },
+    [PSCustomObject]@{ product = "banana"; price = 0.99; aisle = "produce"; available = "yes" },
+    [PSCustomObject]@{ product = "ice cream"; price = 4.50; aisle = "frozen"; available = "no" }
+)
+ 
+# Write sample data to the original CSV file (this would be your existing CSV in a real scenario)
+$data | Export-Csv -Path $sourceFilePath -NoTypeInformation
+ 
+Write-Host "Data has been written to $sourceFilePath"
