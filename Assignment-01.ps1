@@ -80,3 +80,29 @@ $modifiedData | Export-Csv -Path $newCsvFilePath -NoTypeInformation
 
 Write-Host "Filtered data has been written to $newCsvFilePath"
 
+
+Exporting filtered data to a new CSV file
+
+# Move older folders to the archive folder
+Write-Host "Checking for old folders in the general output folder..."
+
+# Get all folders (except the newly created folder) from the general output folder
+$oldFolders = Get-ChildItem -Path $generalOutputFolder -Directory
+foreach ($folder in $oldFolders) {
+    if ($folder.Name -ne $newFolderName) {
+        # Move the old folder directly to the archive folder (no subfolders)
+        $archiveFolderPathWithFolder = Join-Path -Path $archiveFolderPath -ChildPath $folder.Name
+        
+        # Ensure the archive folder exists
+        if (-not (Test-Path -Path $archiveFolderPathWithFolder)) {
+            New-Item -Path $archiveFolderPathWithFolder -ItemType Directory
+        }
+
+        # Move the old folder to the archive
+        Write-Host "Moving old folder '$($folder.Name)' to archive folder..."
+        Move-Item -Path $folder.FullName -Destination $archiveFolderPath
+        Write-Host "Moved '$($folder.Name)' to archive."
+    }
+}
+
+
