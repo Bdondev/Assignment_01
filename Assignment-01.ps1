@@ -35,3 +35,7 @@ $data = @(
 $data | Export-Csv -Path $sourceFilePath -NoTypeInformation
  
 Write-Host "Data has been written to $sourceFilePath"
+
+# Import data from the original CSV file
+Write-Host "Importing data from CSV..."
+$importedData = Import-Csv -Path $sourceFilePath
