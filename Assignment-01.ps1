@@ -39,3 +39,37 @@ Write-Host "Data has been written to $sourceFilePath"
 # Import data from the original CSV file
 Write-Host "Importing data from CSV..."
 $importedData = Import-Csv -Path $sourceFilePath
+
+
+# Filter the data based on the dynamic filter value
+Write-Host "Filtering data..."
+$modifiedData = $importedData | ForEach-Object {
+    # Create an empty custom object with all columns set to empty
+    $output = @{
+        product   = ""
+        price     = ""
+        aisle     = ""
+        available = ""
+    }
+
+    # Check if the value matches the filter value in any of the columns
+    if ($_.'product' -eq $filterValue) {
+        $output['product'] = $_.'product'  # Only populate 'product' if it matches the filter value
+    }
+    if ($_.'price' -eq $filterValue) {
+        $output['price'] = $_.'price'  # Only populate 'price' if it matches the filter value
+    }
+    if ($_.'aisle' -eq $filterValue) {
+        $output['aisle'] = $_.'aisle'  # Only populate 'aisle' if it matches the filter value
+    }
+    if ($_.'available' -eq $filterValue) {
+        $output['available'] = $_.'available'  # Only populate 'available' if it matches the filter value
+    }
+
+    # Return the modified object (with only the filtered column populated)
+    [PSCustomObject]$output
+}
+
+# Debugging: Output modified data after filtering
+$modifiedData | Format-Table -AutoSize
+
